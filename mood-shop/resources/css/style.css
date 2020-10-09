@@ -21,3 +21,7 @@ body {
     display: flex;
     padding: 0.5em;
   }
+  nav {
+    background-color: mediumslateblue;
+    margin: 5px;
+  }
