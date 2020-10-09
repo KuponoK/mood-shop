@@ -12,5 +12,21 @@ for (let i = 0; i < data.length; ++i) {
   img.width = 300;
 
   newDiv.appendChild(img);
-  console.log(img);
+
+  let desc = document.createElement("p");
+  desc.innerText = data[i].desc;
+  newDiv.appendChild(desc);
+
+  let price = document.createElement("p");
+  price.innerText = data[i].price;
+  newDiv.appendChild(price);
+
+  let button = document.createElement("button");
+  button.innerText = data[i].name;
+
+  button.dataset.price = data[i].price;
+  button.innerHTML = "Add to Cart";
+  newDiv.appendChild(button);
+
+  itemsContainer.appendChild(newDiv);
 }
