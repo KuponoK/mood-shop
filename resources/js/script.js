@@ -1,6 +1,10 @@
 const itemsContainer = document.getElementById("items");
 import data from "./data.js";
 
+const itemList = document.getElementById("item-list");
+const cartQty = document.getElementById("cart-qty");
+const cartTotal = document.getElementById("cart-total");
+
 for (let i = 0; i < data.length; ++i) {
   let newDiv = document.createElement("div");
   newDiv.className = "item";
@@ -40,19 +44,25 @@ function addItem(name, price) {
       return;
     }
   }
+
   const item = { name, price, qty: 1 };
   cart.push(item);
 }
 
 function showItems() {
   const qty = getQty();
+  cartQty.innerHTML = `You have ${qty} items in your cart`;
 
-  console.log(`You have ${qty} items in your cart`);
+  let itemStr = "";
   for (let i = 0; i < cart.length; i++) {
-    console.log(`- ${cart[i].name} $${cart[i].price} x ${cart[i].qty}`);
+    const { name, price, qty } = cart[i];
+    itemStr += `<li>${name} $${price} x ${qty} = ${qty * price}
+      </li>`;
   }
+  itemList.innerHTML = itemStr;
+
   const total = getTotal();
-  console.log(`Total in cart: $${total}`);
+  cartTotal.innerHTML = `Total in cart: $${total}`;
 }
 
 function getQty() {
